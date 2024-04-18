@@ -1,0 +1,79 @@
+<div class="mat-elevation-z8 card">
+  <div id="add-button">
+    <button mat-flat-button class="cool-button" color="primary" (click)="openDialog()">
+      <mat-icon>add</mat-icon> Add New Room
+    </button>
+    <button mat-flat-button class="cool-button" color="warn" (click)="resetSensors()">
+      <mat-icon>refresh</mat-icon> Reset Sensors
+    </button>
+  </div>
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let room">{{ room.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomName">
+      <th mat-header-cell *matHeaderCellDef>room</th>
+      <td mat-cell *matCellDef="let room">{{ room.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="roomHumidity">
+      <th mat-header-cell *matHeaderCellDef>Humidity</th>
+      <td mat-cell *matCellDef="let room">{{ room.humidity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomSizeInSquarMeter">
+      <th mat-header-cell *matHeaderCellDef>Size In Squar Meter</th>
+      <td mat-cell *matCellDef="let room">{{ room.sizeInSquareMeter }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomTemperature">
+      <th mat-header-cell *matHeaderCellDef>Temperature</th>
+      <td mat-cell *matCellDef="let room">{{ room.temperature }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomAirQuality">
+      <th mat-header-cell *matHeaderCellDef>AirQuality (in PM)</th>
+      <td mat-cell *matCellDef="let room">{{ room.airQualityInPM }}</td>
+    </ng-container>
+
+<ng-container matColumnDef="eventSensor">
+  <th mat-header-cell *matHeaderCellDef>Event sensor</th>
+  <td mat-cell *matCellDef="let room">
+    <span [style.color]="room.eventSensor.smokeSensor ? 'red' : 'green'">{{"Smoke sensor: "+room.eventSensor.smokeSensor }}</span>,
+    <span [style.color]="room.eventSensor.gasDetector ? 'red' : 'green'">{{ "Gas leak detector: "+room.eventSensor.gasDetector }}</span>,
+    <span [style.color]="room.eventSensor.floodDetector ? 'red' : 'green'">{{ "Flood detector: "+room.eventSensor.floodDetector }}</span>
+  </td>
+</ng-container>
+
+
+    <ng-container matColumnDef="climateUnite">
+      <th mat-header-cell *matHeaderCellDef>Climate Unite</th>
+      <td mat-cell *matCellDef="let room">{{ room.climateUnite }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let room">
+        <button mat-button color="primary" (click)="openDialog(room)">
+          UPDATE
+        </button>
+        <button mat-button color="warn" (click)="deleteRoom(room.id)">
+          DELETE
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    [length]="100"
+    showFirstLastButtons
+    aria-label="Show countries"
+  >
+  </mat-paginator>
+</div>

@@ -1,0 +1,48 @@
+<div>
+  <form [formGroup]="roomForm">
+    <mat-form-field appearance="fill" style="margin: 10px 10px 10px 10px">
+      <mat-label>Room</mat-label>
+      <input matInput id="name" type="text" formControlName="name" />
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="fill" style="margin: 10px 10px 10px 10px">
+      <mat-label>Size</mat-label>
+      <input
+        matInput
+        id="sizeInSquareMeter"
+        type="text"
+        formControlName="sizeInSquareMeter"
+      />
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="fill" style="margin: 10px 10px 10px 10px">
+      <mat-label>temperature</mat-label>
+      <input
+        matInput
+        id="temperature"
+        type="text"
+        formControlName="temperature"
+      />
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        style="margin: 10px 10px 10px 10px"
+        [disabled]="!roomForm.valid"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Save
+      </button>
+      <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+    </div>
+  </form>
+</div>
