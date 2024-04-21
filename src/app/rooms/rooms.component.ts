@@ -8,6 +8,7 @@ import { RoomFormDialogComponent } from '../room-form-dialog/room-form-dialog.co
 import { NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
@@ -23,6 +24,15 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css',
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0 })),
+      state('*', style({ opacity: 1 })),
+      transition(':enter', [
+        animate('0.2s ease-in')
+      ])
+    ])
+  ]
 })
 export class RoomsComponent implements AfterViewInit {
   displayedColumns: string[] = [

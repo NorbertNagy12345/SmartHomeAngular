@@ -1,25 +1,50 @@
 .welcome-container {
-  text-align: center;
-  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff; /* Pastel blue */
+  font-family: 'Papyrus', cursive;
 }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 30px;
+.welcome-container h1 {
+  color: #000000;
+  font-size: 3rem;
+  margin-bottom: 1em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-p {
-  font-size: 1.2em;
-  color: #666;
-  margin-bottom: 300px;
+.welcome-container p {
+  color: #413e3e;
+  font-size: 1.9rem;
+  margin-bottom: 2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-button {
+.welcome-container button {
+  font-size: 1rem;
   padding: 10px 20px;
-  font-size: 1.2em;
-  background-color: #46a7fc;
-  color: #fff;
+  color: white;
+  background-color: #4caf50;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.welcome-container button:hover {
+  background-color: #388e3c;
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.welcome-container button:active {
+  transform: translateY(-1px); 
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); 
+}
+.welcome-container button.clicked {
+  opacity: 0;
+  transform: translateY(20px); 
+}
+
