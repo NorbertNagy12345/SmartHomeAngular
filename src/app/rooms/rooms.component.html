@@ -49,10 +49,14 @@
 </ng-container>
 
 
-    <ng-container matColumnDef="climateUnite">
-      <th mat-header-cell *matHeaderCellDef>Climate Unite</th>
-      <td mat-cell *matCellDef="let room">{{ room.climateUnite }}</td>
-    </ng-container>
+  <ng-container matColumnDef="climateUnite">
+    <th mat-header-cell *matHeaderCellDef>Climate Unite</th>
+    <td mat-cell *matCellDef="let room">
+      <span [style.color]="'blue'">{{"Set temperature: "+room.climateUnite.setTemperature }}</span>,
+      <span [style.color]="room.climateUnite.state ? 'red' : 'green'">{{ "Is turned on: "+room.climateUnite.state }}</span>,
+       <span [style.color]="room.climateUnite.maintenance ? 'red' : 'green'">{{ "Needs maintenance: "+room.climateUnite.maintenance }}</span>
+    </td>
+   </ng-container>
 
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>

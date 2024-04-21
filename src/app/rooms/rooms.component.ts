@@ -56,6 +56,9 @@ export class RoomsComponent implements AfterViewInit {
             gasDetector: room.eventSensor.gasDetector,
             floodDetector: room.eventSensor.floodDetector,
             climateUnite: room.climateUnite,
+            setTemperature: room.climateUnite.setTemperature,
+            state: room.climateUnite.state,
+            maintenance: room.climateUnite.maintenance,
           };
         })
       );
@@ -107,7 +110,10 @@ export class RoomsComponent implements AfterViewInit {
     );
     window.location.reload();
   }
-  getEventSensorInfo(eventSensor: any): string {
-    return `Smoke: ${eventSensor.smokeSensor}, Gas: ${eventSensor.gasDetector}, Flood: ${eventSensor.floodDetector}`;
-  }
+  // getEventSensorInfo(eventSensor: any): string {
+  //   return `Smoke: ${eventSensor.smokeSensor}, Gas: ${eventSensor.gasDetector}, Flood: ${eventSensor.floodDetector}`;
+  // }
+  // getClimateUniteInfo(eventSensor: any): string {
+  //   return `Smoke: ${eventSensor.smokeSensor}, Gas: ${eventSensor.gasDetector}, Flood: ${eventSensor.floodDetector}`;
+  // }
 }
