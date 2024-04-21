@@ -9,6 +9,7 @@ import { NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+
 @Component({
   selector: 'app-rooms',
   standalone: true,
@@ -31,6 +32,7 @@ export class RoomsComponent implements AfterViewInit {
     'roomHumidity',
     'roomAirQuality',
     'roomSizeInSquarMeter',
+    'smartLight',
     'eventSensor',
     'climateUnite',
     'actions',
@@ -59,6 +61,7 @@ export class RoomsComponent implements AfterViewInit {
             setTemperature: room.climateUnite.setTemperature,
             state: room.climateUnite.state,
             maintenance: room.climateUnite.maintenance,
+            smartLight:room.smartLight,
           };
         })
       );
@@ -97,23 +100,28 @@ export class RoomsComponent implements AfterViewInit {
       location.reload();
     });
   }
+
   resetSensors(): void {
     this.roomsService.resetAllSensors().subscribe(
       (response) => {
         console.log('Sensors reset successfully');
-        // Handle success
       },
       (error) => {
         console.error('Error resetting sensors:', error);
-        // Handle error
       }
     );
     window.location.reload();
   }
-  // getEventSensorInfo(eventSensor: any): string {
-  //   return `Smoke: ${eventSensor.smokeSensor}, Gas: ${eventSensor.gasDetector}, Flood: ${eventSensor.floodDetector}`;
-  // }
-  // getClimateUniteInfo(eventSensor: any): string {
-  //   return `Smoke: ${eventSensor.smokeSensor}, Gas: ${eventSensor.gasDetector}, Flood: ${eventSensor.floodDetector}`;
-  // }
+
+  toggleSmartLight(room: any): void {
+    room.smartLight.state = !room.smartLight.state;
+    this.roomsService.toggleSmartLightState(room.id).subscribe(
+      (response) => {
+        console.log('State Changed');
+      },
+      (error) => {
+        console.error('Error changing state', error);      
+  }
+    );
+}
 }

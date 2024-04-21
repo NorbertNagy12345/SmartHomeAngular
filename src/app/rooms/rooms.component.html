@@ -1,3 +1,4 @@
+
 <div class="mat-elevation-z8 card">
   <div id="add-button">
     <button mat-flat-button class="cool-button" color="primary" (click)="openDialog()">
@@ -39,8 +40,19 @@
       <td mat-cell *matCellDef="let room">{{ room.airQualityInPM }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="smartLight">
+      <th mat-header-cell *matHeaderCellDef>Smart Light</th>
+      <td mat-cell *matCellDef="let room">
+        <button mat-icon-button (click)="toggleSmartLight(room)">
+          <mat-icon [style.color]="room.smartLight.state ? 'orange' : 'gray'">
+            {{ room.smartLight.state ? 'lightbulb' : 'lightbulb_outline' }}
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
 <ng-container matColumnDef="eventSensor">
-  <th mat-header-cell *matHeaderCellDef>Event sensor</th>
+  <th mat-header-cell *matHeaderCellDef>Event sensor Info</th>
   <td mat-cell *matCellDef="let room">
     <span [style.color]="room.eventSensor.smokeSensor ? 'red' : 'green'">{{"Smoke sensor: "+room.eventSensor.smokeSensor }}</span>,
     <span [style.color]="room.eventSensor.gasDetector ? 'red' : 'green'">{{ "Gas leak detector: "+room.eventSensor.gasDetector }}</span>,
@@ -50,7 +62,7 @@
 
 
   <ng-container matColumnDef="climateUnite">
-    <th mat-header-cell *matHeaderCellDef>Climate Unite</th>
+    <th mat-header-cell *matHeaderCellDef>Climate Unite  Info</th>
     <td mat-cell *matCellDef="let room">
       <span [style.color]="'blue'">{{"Set temperature: "+room.climateUnite.setTemperature }}</span>,
       <span [style.color]="room.climateUnite.state ? 'red' : 'green'">{{ "Is turned on: "+room.climateUnite.state }}</span>,

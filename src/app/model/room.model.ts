@@ -5,6 +5,12 @@ export interface RoomsModel {
   temperature: number;
   humidity: number;
   airQualityInPM: number;
+  smartLight:{
+    id: number;
+    lightTemperatureInKelvin: number;
+    intensityInLumen: number;
+    state: boolean;
+  };
   eventSensor: {
     id: number;
     smokeSensor: boolean;

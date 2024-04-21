@@ -31,4 +31,8 @@ export class RoomsService {
     console.log(this.url + "/" + id);
     return this.httpClient.put(this.url + "/" + id, request);
   }
+
+  toggleSmartLightState(roomId: number): Observable<any> {
+    return this.httpClient.put(`${this.url}/${roomId}/smartLight`, {});
+  }
 }
